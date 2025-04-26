@@ -1,5 +1,5 @@
 "use client";
-import { generateCodeChallenge, generateRandomString } from "./lib/crypto";
+import { generateCodeChallenge, generateRandomString } from "../app/lib/crypto";
 
 const clientId = "9c9d1901cee94017ad5322993bcac64f";
 const redirectUri = "https://dynamic-mochi-1da10f.netlify.app/";
