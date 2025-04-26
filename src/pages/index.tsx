@@ -34,10 +34,10 @@ function LoginButton() {
             "Content-Type": "application/x-www-form-urlencoded",
           },
           body: new URLSearchParams({
-            client_id: "9c9d1901cee94017ad5322993bcac64f",
-            grant_type: "client_credentials",
+            client_id: clientId,
+            grant_type: "authorization_code",
             code,
-            redirect_uri: "https://dynamic-mochi-1da10f.netlify.app/",
+            redirect_uri: redirectUri,
             code_verifier: codeVerifier,
           }),
         });
