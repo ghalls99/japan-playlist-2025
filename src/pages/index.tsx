@@ -35,7 +35,7 @@ function LoginButton() {
           },
           body: new URLSearchParams({
             client_id: "9c9d1901cee94017ad5322993bcac64f",
-            grant_type: "authorization_code",
+            grant_type: "client_credentials",
             code,
             redirect_uri: "https://dynamic-mochi-1da10f.netlify.app/",
             code_verifier: codeVerifier,
