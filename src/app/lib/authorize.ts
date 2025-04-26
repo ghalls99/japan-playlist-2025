@@ -1,4 +1,4 @@
-const redirectUri = "https://main.d38738c23zp9ty.amplifyapp.com/";
+const redirectUri = "https://dynamic-mochi-1da10f.netlify.app/";
 export async function redirectToAuthCodeFlow(clientId: string) {
   const verifier = generateCodeVerifier(128);
   const challenge = await generateCodeChallenge(verifier);
