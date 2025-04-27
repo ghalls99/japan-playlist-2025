@@ -1,5 +1,5 @@
 export const generatePlaylist = async (before: number) => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token") || "";
   const userId = await getUserId(token);
   const playlistName = `My Retrospective - ${new Date().toLocaleDateString()}`;
 
