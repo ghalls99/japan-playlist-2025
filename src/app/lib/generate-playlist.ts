@@ -35,6 +35,7 @@ export const generatePlaylist = async (before: number, token: string) => {
       );
 
       if (data.items && data.items.length > 0) {
+        console.log("data", JSON.stringify(data.items));
         // Extract track URIs and add to set (prevents duplicates)
         const newTracks = data.items.map((item) => item.track.uri);
         newTracks.forEach((uri) => trackUris.add(uri));
