@@ -68,10 +68,10 @@ export const generatePlaylist = async (after: number, token: string) => {
           const oldestTimestamp = new Date(
             data.items[data.items.length - 1].played_at,
           ).getTime();
-          currentTime = oldestTimestamp - 1; // Subtract 1ms to avoid duplicate entries
+          currentTime += oldestTimestamp - 1; // Subtract 1ms to avoid duplicate entries
         } else {
           // If no items returned, move back by 2 hours
-          currentTime -= twoHoursInMs;
+          currentTime += twoHoursInMs;
         }
 
         // If we made it here, the operation was successful
