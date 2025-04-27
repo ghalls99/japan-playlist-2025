@@ -10,15 +10,14 @@ export const generatePlaylist = async (after: number, token: string) => {
   const twoWeeksInMs = 14 * 24 * 60 * 60 * 1000;
   const twoHoursInMs = 2 * 60 * 60 * 1000;
   const endTime = after + twoWeeksInMs;
-  const startTime = after;
 
   // Store track URIs to avoid duplicates
   const trackUris = new Set();
 
   // Fetch data in 2-hour chunks
-  let currentTime = endTime;
+  let currentTime = after;
 
-  while (currentTime < startTime) {
+  while (currentTime < endTime) {
     // Add exponential backoff parameters
     let retryCount = 0;
     const maxRetries = 5;
