@@ -1,4 +1,4 @@
-export const generatePlaylist = async (before: number, token: string) => {
+export const generatePlaylist = async (after: number, token: string) => {
   const userId = await getUserId(token);
   const playlistName = `My Retrospective - ${new Date().toLocaleDateString()}`;
 
@@ -9,8 +9,8 @@ export const generatePlaylist = async (before: number, token: string) => {
   // Set up time variables
   const twoWeeksInMs = 14 * 24 * 60 * 60 * 1000;
   const twoHoursInMs = 2 * 60 * 60 * 1000;
-  const endTime = before;
-  const startTime = before - twoWeeksInMs;
+  const endTime = after + twoWeeksInMs;
+  const startTime = after;
 
   // Store track URIs to avoid duplicates
   const trackUris = new Set();
@@ -29,7 +29,7 @@ export const generatePlaylist = async (before: number, token: string) => {
     while (!success && retryCount < maxRetries) {
       try {
         const response = await fetch(
-          `https://api.spotify.com/v1/me/player/recently-played?before=${currentTime}`,
+          `https://api.spotify.com/v1/me/player/recently-played?after=${currentTime}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
