@@ -35,7 +35,8 @@ export default function Home() {
     setExpires(Number(localStorage.getItem("expires_in")));
   }, []);
 
-  const handleGenerateClick = () => {
+  const handleGenerateClick = (e: any) => {
+    e.preventDefault();
     generatePlaylist(
       new Date(afterDate).valueOf(),
       new Date(beforeDate).valueOf(),
