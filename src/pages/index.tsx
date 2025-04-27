@@ -4,12 +4,9 @@ import { generatePlaylist } from "@/app/lib/generate-playlist";
 
 // Convert this component to a Client Component
 export default function Home() {
-  const [token, setToken] = useState<string | null>(
-    localStorage.getItem("token"),
-  );
-  const [expires_in, setExpires] = useState<number | null>(
-    Number(localStorage.getItem("expires_in")),
-  );
+  const [token, setToken] = useState<string | null>(null);
+  const [expires_in, setExpires] = useState<number | null>(null);
+
   const [beforeDate, setBeforeDate] = useState("");
   const getCode = async () => {
     await redirectToAuthCodeFlow("9c9d1901cee94017ad5322993bcac64f");
@@ -40,7 +37,7 @@ export default function Home() {
 
   const handleGenerateClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    generatePlaylist(new Date(beforeDate).valueOf());
+    generatePlaylist(new Date(beforeDate).valueOf(), token || "");
   };
 
   return (
