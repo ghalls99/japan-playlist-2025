@@ -1,8 +1,8 @@
-export const generatePlaylist = async (after: number, before: number) => {
+export const generatePlaylist = async (before: number) => {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    `https://api.spotify.com/v1/me/player/recently-played?after=${after}&before=${before}`,
+    `https://api.spotify.com/v1/me/player/recently-played?before=${before}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

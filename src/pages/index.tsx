@@ -11,7 +11,6 @@ export default function Home() {
     Number(localStorage.getItem("expires_in")),
   );
   const [beforeDate, setBeforeDate] = useState("");
-  const [afterDate, setAfterDate] = useState("");
   const getCode = async () => {
     await redirectToAuthCodeFlow("9c9d1901cee94017ad5322993bcac64f");
   };
@@ -41,10 +40,7 @@ export default function Home() {
 
   const handleGenerateClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    generatePlaylist(
-      new Date(afterDate).valueOf(),
-      new Date(beforeDate).valueOf(),
-    );
+    generatePlaylist(new Date(beforeDate).valueOf());
   };
 
   return (
@@ -54,17 +50,6 @@ export default function Home() {
       {token && (
         <form onSubmit={handleGenerateClick}>
           <div className="date-picker-container">
-            <div className="date-picker">
-              <label htmlFor="after-date">After Date:</label>
-              <input
-                id="after-date"
-                type="date"
-                value={afterDate}
-                onChange={(e) => setAfterDate(e.target.value)}
-                required
-              />
-            </div>
-
             <div className="date-picker">
               <label htmlFor="before-date">Before Date:</label>
               <input
