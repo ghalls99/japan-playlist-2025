@@ -18,7 +18,7 @@ export const generatePlaylist = async (after: number, token: string) => {
   // Fetch data in 2-hour chunks
   let currentTime = endTime;
 
-  while (currentTime > startTime) {
+  while (currentTime < startTime) {
     // Add exponential backoff parameters
     let retryCount = 0;
     const maxRetries = 5;
