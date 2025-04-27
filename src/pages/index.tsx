@@ -36,8 +36,10 @@ export default function Home() {
 
   return (
     <div>
-      <button onClick={getCode}>Click me</button>
-      <button onClick={generatePlaylist}>Generate Playlist</button>
+      <button onClick={getCode}>Login</button>
+      {localStorage.getItem("token") && (
+        <button onClick={generatePlaylist}>Generate Playlist</button>
+      )}
     </div>
   );
 }
