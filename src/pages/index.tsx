@@ -35,7 +35,7 @@ export default function Home() {
     setExpires(Number(localStorage.getItem("expires_in")));
   }, []);
 
-  const handleGenerateClick = (e: any) => {
+  const handleGenerateClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     generatePlaylist(
       new Date(afterDate).valueOf(),
