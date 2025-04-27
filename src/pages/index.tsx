@@ -4,8 +4,12 @@ import { generatePlaylist } from "@/app/lib/generate-playlist";
 
 // Convert this component to a Client Component
 export default function Home() {
-  const [token, setToken] = useState<string | null>(null);
-  const [expires_in, setExpires] = useState<number | null>(null);
+  const [token, setToken] = useState<string | null>(
+    localStorage.getItem("token"),
+  );
+  const [expires_in, setExpires] = useState<number | null>(
+    Number(localStorage.getItem("expires_in")),
+  );
   const [beforeDate, setBeforeDate] = useState("");
   const [afterDate, setAfterDate] = useState("");
   const getCode = async () => {
