@@ -16,7 +16,10 @@ export default function Home() {
     const url = new URL(window.location.href);
     const code = url.searchParams.get("code");
 
-    if (code) {
+    setToken(localStorage.getItem("token"));
+    setExpires(Number(localStorage.getItem("expires_in")));
+
+    if (code && !token && !expires_in) {
       // Create an async function inside useEffect and call it immediately
       const fetchToken = async () => {
         const { access_token, expires_in } = await getAccessToken(
@@ -30,9 +33,6 @@ export default function Home() {
 
       fetchToken().catch(console.error); // Handle any errors from the async function
     }
-
-    setToken(localStorage.getItem("token"));
-    setExpires(Number(localStorage.getItem("expires_in")));
   }, []);
 
   const handleGenerateClick = (e: React.FormEvent<HTMLFormElement>) => {
