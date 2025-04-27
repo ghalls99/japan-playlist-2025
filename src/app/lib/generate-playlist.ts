@@ -17,7 +17,7 @@ export const generatePlaylist = async (after: number, token: string) => {
   // Fetch data in 2-hour chunks
   let currentTime = after;
 
-  while (currentTime < endTime) {
+  while (endTime > currentTime) {
     // Add exponential backoff parameters
     let retryCount = 0;
     const maxRetries = 5;
@@ -82,7 +82,7 @@ export const generatePlaylist = async (after: number, token: string) => {
         if (retryCount >= maxRetries) {
           console.error(`Max retries reached. Last error: ${error}`);
           // Still move the time window in case of errors
-          currentTime -= twoHoursInMs;
+          currentTime += twoHoursInMs;
           break;
         }
 

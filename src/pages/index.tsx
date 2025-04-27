@@ -7,7 +7,7 @@ export default function Home() {
   const [token, setToken] = useState<string | null>(null);
   const [expires_in, setExpires] = useState<number | null>(null);
 
-  const [beforeDate, setBeforeDate] = useState("");
+  const [afterDate, setAfterDate] = useState("");
   const getCode = async () => {
     await redirectToAuthCodeFlow("9c9d1901cee94017ad5322993bcac64f");
   };
@@ -37,7 +37,7 @@ export default function Home() {
 
   const handleGenerateClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    generatePlaylist(new Date(beforeDate).valueOf(), token || "");
+    generatePlaylist(new Date(afterDate).valueOf(), token || "");
   };
 
   return (
@@ -48,12 +48,12 @@ export default function Home() {
         <form onSubmit={handleGenerateClick}>
           <div className="date-picker-container">
             <div className="date-picker">
-              <label htmlFor="before-date">Before Date:</label>
+              <label htmlFor="before-date">after Date</label>
               <input
                 id="before-date"
                 type="date"
-                value={beforeDate}
-                onChange={(e) => setBeforeDate(e.target.value)}
+                value={afterDate}
+                onChange={(e) => setAfterDate(e.target.value)}
                 required
               />
             </div>
